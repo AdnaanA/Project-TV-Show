@@ -5,14 +5,12 @@ function setup() {
 }
 
 function makePageForEpisodes(episodeList) {
-  const rootElem = document.getElementById("root");
   const titleElem = document.getElementById("title");
   const imgEpisodeElem = document.getElementById("img-of-episode");
   const seasonAndEpisodeElem = document.getElementById("season-and-episode");
   const summaryElem = document.getElementById("summary");
   
 
-  rootElem.textContent = `Got ${episodeList.length} episode(s)`;
   titleElem.textContent = episodeList[0].name;
   imgEpisodeElem.innerHTML = `<img src="${episodeList[0].image.medium}">`
   seasonAndEpisodeElem.textContent = `S${String(episodeList[0].season).padStart(2, "0")}E${String(episodeList[0].number).padStart(2, "0")}`;
