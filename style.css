@@ -106,3 +106,30 @@ body{
   #source-link a:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 1100px) {
+    #episodes-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+    }
+  }
+  
+  @media (max-width: 650px) {
+    #episodes-container {
+      grid-template-columns: 1fr; /* 1 per row on phones */
+    }
+  
+    .episode-card {
+      width: 100%; /* let cards stretch on small screens */
+    }
+  
+    #container,
+    #source-link-container {
+      padding: 0 10px;
+    }
+  
+    #source-link {
+      text-align: center; /* center attribution on mobile */
+      margin: 10px 0;
+    }
+  }
+
