@@ -86,6 +86,7 @@ body{
 
   #source-link-container {
     max-width: 1200px;
+    text-align: right;
     margin: 0 auto; 
     padding: 0 20px;
     box-sizing: border-box;
