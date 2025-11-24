@@ -5,21 +5,25 @@ function setup() {
 }
 
 function makePageForEpisodes(episodeList) {
+  // Get container element to hold episode cards the html structure
   const container = document.getElementById("episodes-container");
   container.innerHTML = ""; // clear old cards
-
+  
+  // Create episode cards and append to container
   episodeList.forEach((episode) => {
+    // Create elements for episode card
     const card = document.createElement("div");
+    // Add class for styling
     card.classList.add("episode-card");
+
+    const titleElem = document.createElement("div");
+    titleElem.classList.add("title");
 
     const imgEpisodeElem = document.createElement("div");
     imgEpisodeElem.classList.add("img-of-episode");
 
     const episodeContent = document.createElement("div");
     episodeContent.classList.add("episode-content");
-
-    const titleElem = document.createElement("div");
-    titleElem.classList.add("title");
 
     const seasonAndEpisodeElem = document.createElement("div");
     seasonAndEpisodeElem.classList.add("season-and-episode");
@@ -37,10 +41,8 @@ function makePageForEpisodes(episodeList) {
     `;
 
     // Season + episode
-    seasonAndEpisodeElem.textContent = `S${String(episode.season).padStart(
-      2,
-      "0"
-    )}E${String(episode.number).padStart(2, "0")}`;
+    seasonAndEpisodeElem.textContent = `S${String(episode.season).padStart(2, "0")}
+    E${String(episode.number).padStart(2, "0")}`;
 
     // Summary truncation
     let summaryLength = 152;
