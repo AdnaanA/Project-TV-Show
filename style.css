@@ -1,135 +1,100 @@
-#root {
-  color: red;
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
 }
 
+/* ===================== SOURCE LINK ===================== */
 
-body{
-  margin:0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background:#f4f4f4;
-  }
-  
-  
-  .episode-card{
-  background:#fff;
-  width:340px;
-  border-radius:10px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
-  overflow:hidden;
-  }
-  
-  
-  .episode-card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  }
-  
-  
-  .episode-content{
-  padding:15px;
-  }
-  
-  
-  .title{
-  font-size:18px;
-  font-weight:bold;
-  margin-bottom:8px;
-  }
-  
-  
-  .season-and-episode{
-  font-size:14px;
-  color:#666;
-  margin-bottom:10px;
-  }
-  
-  
-  .summary{
-  font-size:14px;
-  color:#444;
-  line-height:1.4;
-  }
-  
+#source-link-container {
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 0 20px;
+}
+
+#source-link {
+  text-align: right;
+  font-size: 14px;
+  color: #555;
+}
+
+#source-link a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#source-link a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== MAIN GRID ===================== */
+
+#episodes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 15px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ===================== EPISODE CARD ===================== */
+
+.episode-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.episode-card:hover {
+  transform: translateY(-3px);
+}
+
+.episode-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.episode-content {
+  padding: 15px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.season-and-episode {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.summary {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Tablets */
+@media (max-width: 900px) {
   #episodes-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 5px 20px;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .episode-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .img-of-episode img {
-    width: 100%;
-    display: block;
-    border-radius: 6px;
-  }
-  
-  .episode-content {
-    margin-top: 10px;
-  }
+}
 
-  #container {
-    max-width: 1200px; /* same as your episodes container */
-    margin: 0 auto;    /* center the whole container */
-    padding: 0 20px;
-    box-sizing: border-box;
-  }
-
-  #source-link-container {
-    max-width: 1200px;
-    text-align: right;
-    margin: 0 auto; 
-    padding: 0 20px;
-    box-sizing: border-box;
+/* Mobile */
+@media (max-width: 600px) {
+  #episodes-container {
+    grid-template-columns: 1fr;
   }
 
   #source-link {
-    margin: 0 20px;
-    font-size: 14px;
-    color: #555;
+    text-align: right;
   }
-  
-  #source-link a {
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  #source-link a:hover {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 1100px) {
-    #episodes-container {
-      grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
-    }
-  }
-  
-  @media (max-width: 650px) {
-    #episodes-container {
-      grid-template-columns: 1fr; /* 1 per row on phones */
-    }
-  
-    .episode-card {
-      width: 100%; /* let cards stretch on small screens */
-    }
-  
-    #container,
-    #source-link-container {
-      padding: 0 10px;
-    }
-  
-    #source-link {
-      text-align: center; /* center attribution on mobile */
-      margin: 10px 0;
-    }
-  }
-
+}
