@@ -5,23 +5,65 @@ function setup() {
 }
 
 function makePageForEpisodes(episodeList) {
-  const titleElem = document.getElementById("title");
-  const imgEpisodeElem = document.getElementById("img-of-episode");
-  const seasonAndEpisodeElem = document.getElementById("season-and-episode");
-  const summaryElem = document.getElementById("summary");
-  
+  const container = document.getElementById("episodes-container");
+  container.innerHTML = ""; // clear old cards
 
-  titleElem.textContent = episodeList[0].name;
-  imgEpisodeElem.innerHTML = `<img src="${episodeList[0].image.medium}" alt="${episodeList[0].name || "Episode image"}">`;
-  seasonAndEpisodeElem.textContent = `S${String(episodeList[0].season).padStart(2, "0")}E${String(episodeList[0].number).padStart(2, "0")}`;
-  let summaryLength = 152;
-  if (episodeList[0].summary.length > summaryLength) {
-    summaryElem.innerHTML = `${episodeList[0].summary.substring(0, summaryLength)}...`;
-  }
-  
+  episodeList.forEach((episode) => {
+    const card = document.createElement("div");
+    card.classList.add("episode-card");
 
+    const imgEpisodeElem = document.createElement("div");
+    imgEpisodeElem.classList.add("img-of-episode");
+
+    const episodeContent = document.createElement("div");
+    episodeContent.classList.add("episode-content");
+
+    const titleElem = document.createElement("div");
+    titleElem.classList.add("title");
+
+    const seasonAndEpisodeElem = document.createElement("div");
+    seasonAndEpisodeElem.classList.add("season-and-episode");
+
+    const summaryElem = document.createElement("div");
+    summaryElem.classList.add("summary");
+
+    // Title
+    titleElem.textContent = episode.name;
+
+    // Image with alt
+    imgEpisodeElem.innerHTML = `
+      <img src="${episode.image?.medium}" 
+           alt="${episode.name || "Episode image"}">
+    `;
+
+    // Season + episode
+    seasonAndEpisodeElem.textContent = `S${String(episode.season).padStart(
+      2,
+      "0"
+    )}E${String(episode.number).padStart(2, "0")}`;
+
+    // Summary truncation
+    let summaryLength = 152;
+    if (episode.summary) {
+      summaryElem.innerHTML =
+        episode.summary.length > summaryLength
+          ? `${episode.summary.substring(0, summaryLength)}...`
+          : episode.summary;
+    } else {
+      summaryElem.textContent = "No summary available.";
+    }
+
+    // Build structure
+    episodeContent.appendChild(titleElem);
+    episodeContent.appendChild(seasonAndEpisodeElem);
+    episodeContent.appendChild(summaryElem);
+
+    card.appendChild(imgEpisodeElem);
+    card.appendChild(episodeContent);
+
+    container.appendChild(card);
+  });
 }
-
 
 
 window.onload = setup;
