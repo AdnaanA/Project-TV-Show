@@ -12,7 +12,7 @@ function makePageForEpisodes(episodeList) {
   
 
   titleElem.textContent = episodeList[0].name;
-  imgEpisodeElem.innerHTML = `<img src="${episodeList[0].image.medium}">`
+  imgEpisodeElem.innerHTML = `<img src="${episodeList[0].image.medium}" alt="${episodeList[0].name || "Episode image"}">`;
   seasonAndEpisodeElem.textContent = `S${String(episodeList[0].season).padStart(2, "0")}E${String(episodeList[0].number).padStart(2, "0")}`;
   let summaryLength = 152;
   if (episodeList[0].summary.length > summaryLength) {
