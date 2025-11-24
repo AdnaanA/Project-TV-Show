@@ -85,8 +85,6 @@ body{
   }
 
   #source-link-container {
-    max-width: 1200px; /* same as your episodes container */
-    margin: 0 auto;    /* center the whole container */
     padding: 0 20px;
     box-sizing: border-box;
   }
