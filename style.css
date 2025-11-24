@@ -2,6 +2,7 @@
   color: red;
 }
 
+
 body{
   margin:0;
   padding: 0;
@@ -56,8 +57,6 @@ body{
   }
   
   #episodes-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
