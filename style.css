@@ -113,4 +113,103 @@ body {
 
 #select-label {
 	margin-left: 15px;
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+/* ===================== SOURCE LINK ===================== */
+
+#source-link-container {
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 0 20px;
+}
+
+#source-link {
+  text-align: right;
+  font-size: 14px;
+  color: #555;
+}
+
+#source-link a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#source-link a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== MAIN GRID ===================== */
+
+#episodes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 15px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ===================== EPISODE CARD ===================== */
+
+.episode-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.episode-card:hover {
+  transform: translateY(-3px);
+}
+
+.episode-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.episode-content {
+  padding: 15px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.season-and-episode {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.summary {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Tablets */
+@media (max-width: 900px) {
+  #episodes-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #episodes-container {
+    grid-template-columns: 1fr;
+  }
+
+  #source-link {
+    text-align: right;
+  }
 }
