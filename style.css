@@ -1,100 +1,199 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	background: #f4f4f4;
+}
+
+.img-of-episode img {
+	width: 100%;
+	display: block;
+	border-radius: 6px;
+}
+
+figure.img-of-episode {
+	margin: 0;
+}
+
+#container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+#source-link-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1200px;
+	text-align: right;
+	margin: 0 auto;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+#source-link {
+	margin: 0 20px;
+	font-size: 14px;
+	color: #555;
+}
+
+#source-link a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#source-link a:hover {
+	text-decoration: underline;
+}
+
+#searchInput {
+	padding: 5px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-left: 5px;
+}
+
+#select {
+	padding: 5px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-left: 5px;
+}
+
+#select-label {
+	margin-left: 15px;
+}
+
+.search-bar {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+	#source-link-container {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 8px;
+	}
+
+	#source-link {
+		text-align: left;
+		margin: 0;
+	}
+
+	#searchInput,
+	#select {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	#select-label {
+		margin-left: 0;
+	}
 }
 
 /* ===================== SOURCE LINK ===================== */
 
 #source-link-container {
-  max-width: 1200px;
-  margin: 10px auto;
-  padding: 0 20px;
+	max-width: 1200px;
+	margin: 10px auto;
+	padding: 0 20px;
 }
 
 #source-link {
-  text-align: right;
-  font-size: 14px;
-  color: #555;
+	text-align: right;
+	font-size: 14px;
+	color: #555;
 }
 
 #source-link a {
-  text-decoration: none;
-  font-weight: bold;
+	text-decoration: none;
+	font-weight: bold;
 }
 
 #source-link a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 /* ===================== MAIN GRID ===================== */
 
 #episodes-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px 15px 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px 15px 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+	gap: 20px;
 }
 
 /* ===================== EPISODE CARD ===================== */
 
 .episode-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  overflow: hidden;
-  transition: transform 0.2s ease;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+	overflow: hidden;
+	transition: transform 0.18s ease;
+	padding: 0;
 }
 
-.episode-card:hover {
-  transform: translateY(-3px);
+.episode-card > a.episode-link {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	width: 100%;
+	height: 100%;
+	color: inherit;
+	text-decoration: none;
+	transition: transform 0.14s ease, opacity 0.12s ease;
+}
+
+.episode-card:focus-within {
+	box-shadow: 0 0 0 3px rgba(42, 122, 226, 0.9);
+	outline: none;
+	border-radius: 12px;
+}
+
+.episode-card > a.episode-link:active {
+	opacity: 0.96;
+	transform: translateY(0.5px);
+}
+
+.episode-card > a.episode-link:hover {
+	transform: translateY(-3px);
 }
 
 .episode-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+	display: block;
 }
 
 .episode-content {
-  padding: 15px;
+	padding: 18px 20px;
+	margin-top: 0;
 }
-
 .title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 6px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 6px;
 }
 
 .season-and-episode {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 10px;
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 10px;
 }
 
 .summary {
-  font-size: 14px;
-  color: #444;
-  line-height: 1.4;
-}
-
-/* ===================== RESPONSIVE ===================== */
-
-/* Tablets */
-@media (max-width: 900px) {
-  #episodes-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  #episodes-container {
-    grid-template-columns: 1fr;
-  }
-
-  #source-link {
-    text-align: right;
-  }
+	font-size: 14px;
+	color: #444;
+	line-height: 1.4;
 }

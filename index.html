@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | Adnaan (AdnaanA)</title>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TV Show Project for Adnaan (AdnaanA) at CYF" />
+  <title>TV Show Project | Adnaan (AdnaanA)</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
 
 
-  <body>
+<body>
+  <header>
     <div id="source-link-container">
-    <div id="source-link">
-      <p>
-        Data originally from 
-        <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>
-      </p>
+      <div class="search-bar">
+        <label for="searchInput">Search:</label>
+        <input type="text" id="searchInput" placeholder="Type to search..." />
+      </div>
+      <div class="select">
+        <label for="select" id="select-label">Select:</label>
+        <select name="select-episode" id="select">
+          <option value="all-episodes">All Episodes</option>
+        </select>
+      </div>
+      <div id="source-link">
+        <p>
+          Data originally from
+          <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>
+        </p>
+      </div>
     </div>
-    </div>
-      <div id="episodes-container"></div>
+  </header>
+  <main id="container">
+    <section id="episodes-container" aria-label="Episodes"></section>
+  </main>
 
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
+  <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+  <script src="episodes.js"></script>
 
-    <!-- Loads YOUR javascript code -->
-    <script src="script.js"></script>
-  </body>
+  <!-- Loads YOUR javascript code -->
+  <script src="script.js"></script>
+</body>
+
 </html>
