@@ -197,3 +197,43 @@ figure.img-of-episode {
 	color: #444;
 	line-height: 1.4;
 }
+
+/*===================== LOADING SPINNER ===================== */
+/* Hidden by default */
+.hidden {
+	display: none;
+  }
+  
+  /* Simple circular spinner */
+  .spinner {
+	width: 50px;
+	height: 50px;
+	border: 6px solid #ddd;
+	border-top-color: #333;
+	border-radius: 50%;
+	animation: spin 0.8s linear infinite;
+	margin: 20px auto;
+  }
+  
+  @keyframes spin {
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+
+/*===================== ERROR MESSAGE BOX ===================== */
+.error-box {
+	background: #ffdddd;
+	color: #990000;
+	padding: 12px;
+	margin: 15px 0;
+	border: 1px solid #cc0000;
+	border-radius: 4px;
+	font-size: 1rem;
+  }
+  
+  .hidden {
+	display: none;
+  }
+  
+  
