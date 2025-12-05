@@ -3,6 +3,7 @@
 // =======================================
 let _episodes = []; // holds episodes once fetched
 let _shows = []; // holds shows once fetched
+let _episodesCache = {}; // cache episodes by show ID
 // =======================================
 // SHOW / HIDE SPINNER HELPERS
 // =======================================
@@ -36,7 +37,9 @@ async function setup() {
 
 	// 1. Fetch data from TVMaze API
 	_shows = await loadShows();
-	_episodes = await loadEpisodes(_shows[0]?.id || 1); // load episodes of first show by default
+	const firstShowId = _shows[0]?.id || 1;
+	_episodes = await loadEpisodes(firstShowId); // load episodes of first show by default
+	_episodesCache[firstShowId] = _episodes; // Cache first show
 
 	// 2.Populate dropdowns
 	populateSelectShowOptions();
@@ -275,8 +278,18 @@ async function selectShow() {
 	const showId = parseInt(selectShow.value);
 	if (isNaN(showId)) return;
 
+	// Check cache first
+	if (_episodesCache[showId]) {
+		_episodes = _episodesCache[showId];
+		populateSelectEpisodeOptions();
+		makePageForEpisodes(_episodes);
+		return;
+	}
+
+	// Only fetch if not cached
 	showSpinner();
 	_episodes = await loadEpisodes(showId);
+	_episodesCache[showId] = _episodes; // Cache it
 	hideSpinner();
 
 	populateSelectEpisodeOptions();
