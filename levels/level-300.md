@@ -24,13 +24,13 @@ Level 300 is about getting rid of our static data from `episodes.js`, and instea
 
 ### Requirements
 
-1. You must delete the `episodes.js` file from your repository.
-2. Your website must still work the same, but by using a `fetch` request to https://api.tvmaze.com/shows/82/episodes. This URL should serve the exact same content as was returned by `getAllEpisodes` in `episodes.js`.
-3. You must fetch this URL only _once_ per visit to your website. You should not re-fetch when someone searches, scrolls, or selects an episode from the drop-down.
-4. If you don't have data yet, you should show something to tell the user to wait for the data.
+1. You must delete the `episodes.js` file from your repository. Done
+2. Your website must still work the same, but by using a `fetch` request to https://api.tvmaze.com/shows/82/episodes. This URL should serve the exact same content as was returned by `getAllEpisodes` in `episodes.js`. Done
+3. You must fetch this URL only _once_ per visit to your website. You should not re-fetch when someone searches, scrolls, or selects an episode from the drop-down. Done
+4. If you don't have data yet, you should show something to tell the user to wait for the data. Done using a spinner
 5. If an error occurred loading the data, notify the user.
-  1. Note: real users don't look in the console - `console.log` or `console.error` are not sufficient for this requirement.
-  2. You will need to simulate an error to test this out yourself.
+  1. Note: real users don't look in the console - `console.log` or `console.error` are not sufficient for this requirement. Done
+  2. You will need to simulate an error to test this out yourself. Done tested
 
 ### Documentation
 
