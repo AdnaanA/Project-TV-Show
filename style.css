@@ -1,149 +1,122 @@
-body {
+/* =============== Reset and base styles =============== */
+html, body {
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden; /* Prevent horizontal scroll */
+	width: 100vw;       /* Ensure viewport width */
 	font-family: Arial, sans-serif;
 	background: #f4f4f4;
-}
-
-.img-of-episode img {
+  }
+  
+  /* =================== Episode image =================== */
+  .img-of-episode img {
 	width: 100%;
 	display: block;
 	border-radius: 6px;
-}
-
-figure.img-of-episode {
+  }
+  
+  figure.img-of-episode {
 	margin: 0;
-}
-
-#container {
+  }
+  
+  /* ============== Containers and layout ============== */
+  #container,
+  #source-link-container,
+  #episodes-container {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 20px;
 	box-sizing: border-box;
-}
-
-#source-link-container {
+  }
+  
+  /* Source link container tweaks */
+  #source-link-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 1200px;
 	text-align: right;
-	margin: 0 auto;
-	padding: 0 20px;
-	box-sizing: border-box;
-}
-
-#source-link {
+	margin: 10px auto 0;
+	padding: 0;
+  }
+  
+  /* Source link text and links */
+  #source-link {
 	margin: 0 20px;
 	font-size: 14px;
 	color: #555;
-}
-
-#source-link a {
+	text-align: right;
+  }
+  
+  #source-link a {
 	text-decoration: none;
 	font-weight: bold;
-}
-
-#source-link a:hover {
+  }
+  
+  #source-link a:hover {
 	text-decoration: underline;
-}
-
-#searchInput {
+  }
+  
+  /* ====================== Header ====================== */
+  header {
+	display: flex;
+	justify-content: space-between; /* push items to left and right edges */
+	align-items: center;            /* vertically center items */
+	padding: 0 20px 0 25px;
+	max-width: 1200px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	width: 96%;
+  }
+  
+  /* =================== Search Bar ===================== */
+  #searchInput {
 	padding: 5px;
 	font-size: 14px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	margin-left: 5px;
-}
-
-#select {
+  }
+  
+  #select {
 	padding: 5px;
 	font-size: 14px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	margin-left: 5px;
-}
-
-#select-label {
+  }
+  
+  #select-label {
 	margin-left: 15px;
-}
-
-.search-bar {
+  }
+  
+  .search-bar {
 	display: flex;
 	align-items: center;
 	gap: 8px;
 	flex-wrap: wrap;
-}
-
-@media (max-width: 640px) {
-	#source-link-container {
-		flex-direction: column;
-		align-items: stretch;
-		gap: 8px;
-	}
-
-	#source-link {
-		text-align: left;
-		margin: 0;
-	}
-
-	#searchInput,
-	#select {
-		width: 100%;
-		box-sizing: border-box;
-	}
-
-	#select-label {
-		margin-left: 0;
-	}
-}
-
-/* ===================== SOURCE LINK ===================== */
-
-#source-link-container {
-	max-width: 1200px;
-	margin: 10px auto;
-	padding: 0 20px;
-}
-
-#source-link {
-	text-align: right;
-	font-size: 14px;
-	color: #555;
-}
-
-#source-link a {
-	text-decoration: none;
-	font-weight: bold;
-}
-
-#source-link a:hover {
-	text-decoration: underline;
-}
-
-/* ===================== MAIN GRID ===================== */
-
-#episodes-container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 20px 15px 20px;
+  }
+  
+  /* =================== Episodes Grid =================== */
+  #episodes-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 	gap: 20px;
-}
-
-/* ===================== EPISODE CARD ===================== */
-
-.episode-card {
+	padding-bottom: 15px;
+  }
+  
+  /* =================== Episode Card ==================== */
+  .episode-card {
 	background: #fff;
 	border-radius: 12px;
 	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 	overflow: hidden;
 	transition: transform 0.18s ease;
 	padding: 0;
-}
-
-.episode-card > a.episode-link {
+	width: 100%; /* Make sure card fits grid cell */
+	box-sizing: border-box;
+  }
+  
+  .episode-card > a.episode-link {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -152,55 +125,58 @@ figure.img-of-episode {
 	color: inherit;
 	text-decoration: none;
 	transition: transform 0.14s ease, opacity 0.12s ease;
-}
-
-.episode-card:focus-within {
+  }
+  
+  .episode-card:focus-within {
 	box-shadow: 0 0 0 3px rgba(42, 122, 226, 0.9);
 	outline: none;
 	border-radius: 12px;
-}
-
-.episode-card > a.episode-link:active {
+  }
+  
+  .episode-card > a.episode-link:active {
 	opacity: 0.96;
 	transform: translateY(0.5px);
-}
-
-.episode-card > a.episode-link:hover {
+  }
+  
+  .episode-card > a.episode-link:hover {
 	transform: translateY(-3px);
-}
-
-.episode-card img {
-	width: 100%;
-	height: 220px;
+  }
+  
+  .episode-card img {
+	max-width: 100%;
+	height: auto; /* Let height adjust */
 	object-fit: cover;
 	display: block;
-}
-
-.episode-content {
+	border-radius: 12px 12px 0 0; /* Rounded top corners */
+  }
+  
+  /* Episode content */
+  .episode-content {
 	padding: 18px 20px;
 	margin-top: 0;
-}
-.title {
+  }
+  
+  .title {
 	font-size: 18px;
 	font-weight: bold;
 	margin-bottom: 6px;
-}
-
-.season-and-episode {
+  }
+  
+  .season-and-episode {
 	font-size: 14px;
 	color: #666;
 	margin-bottom: 10px;
-}
-
-.summary {
+  }
+  
+  .summary {
 	font-size: 14px;
 	color: #444;
 	line-height: 1.4;
-}
-
-/*===================== LOADING SPINNER ===================== */
-/* Hidden by default */
-.hidden {
+  }
+  
+  /* ================= Loading Spinner ================== */
+  /* Hidden by default */
+  .hidden {
 	display: none;
   }
   
@@ -220,9 +196,9 @@ figure.img-of-episode {
 	  transform: rotate(360deg);
 	}
   }
-
-/*===================== ERROR MESSAGE BOX ===================== */
-.error-box {
+  
+  /* ================= Error Message Box ================ */
+  .error-box {
 	background: #ffdddd;
 	color: #990000;
 	padding: 12px;
@@ -232,8 +208,38 @@ figure.img-of-episode {
 	font-size: 1rem;
   }
   
-  .hidden {
-	display: none;
-  }
+  /* =============== Responsive tweaks =============== */
+  @media (max-width: 640px) {
   
+	/* Make containers full width with smaller padding */
+	#container,
+	#source-link-container,
+	#episodes-container {
+	  max-width: 100%;
+	  padding-left: 15px;
+	  padding-right: 15px;
+	}
+  
+	#source-link-container {
+	  flex-direction: column;
+	  align-items: stretch;
+	  gap: 8px;
+	}
+  
+	#source-link {
+	  text-align: left;
+	  margin: 0;
+	}
+  
+	#searchInput,
+	#select {
+	  width: 100%;
+	  box-sizing: border-box;
+	  margin-left: 0;
+	}
+  
+	#select-label {
+	  margin-left: 0;
+	}
+  }
   
