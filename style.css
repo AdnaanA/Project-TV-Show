@@ -1,111 +1,105 @@
 /* =============== Reset and base styles =============== */
-html, body {
+html,
+body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden; /* Prevent horizontal scroll */
-	width: 100vw;       /* Ensure viewport width */
 	font-family: Arial, sans-serif;
 	background: #f4f4f4;
-  }
-  
-  /* =================== Episode image =================== */
-  .img-of-episode img {
+}
+
+/* =================== Episode image =================== */
+.img-of-episode img {
 	width: 100%;
 	display: block;
 	border-radius: 6px;
-  }
-  
-  figure.img-of-episode {
+}
+
+figure.img-of-episode {
 	margin: 0;
-  }
-  
-  /* ============== Containers and layout ============== */
-  #container,
-  #source-link-container,
-  #episodes-container {
+}
+
+/* ============== Containers and layout ============== */
+#container,
+#source-link-container,
+#episodes-container {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 20px;
 	box-sizing: border-box;
-  }
-  
-  /* Source link container tweaks */
-  #source-link-container {
+}
+
+/* Source link container tweaks */
+#source-link-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	text-align: right;
 	margin: 10px auto 0;
 	padding: 0;
-  }
-  
-  /* Source link text and links */
-  #source-link {
-	margin: 0 20px;
-	font-size: 14px;
-	color: #555;
-	text-align: right;
-  }
-  
-  #source-link a {
-	text-decoration: none;
-	font-weight: bold;
-  }
-  
-  #source-link a:hover {
-	text-decoration: underline;
-  }
-  
-  /* ====================== Header ====================== */
-  header {
+}
+
+/* ====================== Header ====================== */
+header {
 	display: flex;
 	justify-content: space-between; /* push items to left and right edges */
-	align-items: center;            /* vertically center items */
+	align-items: center; /* vertically center items */
 	padding: 0 20px 0 25px;
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 10px auto;
 	box-sizing: border-box;
 	width: 96%;
-  }
-  
-  /* =================== Search Bar ===================== */
-  #searchInput {
-	padding: 5px;
+}
+
+/* =================== Search Bar ===================== */
+#searchInput {
+	padding: 5px 8px;
 	font-size: 14px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	margin-left: 5px;
-  }
-  
-  #select {
-	padding: 5px;
+	height: 32px;
+	box-sizing: border-box;
+}
+
+select {
+	padding: 5px 8px;
 	font-size: 14px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	margin-left: 5px;
-  }
-  
-  #select-label {
+	height: 32px;
+	box-sizing: border-box;
+}
+
+#select-label {
 	margin-left: 15px;
-  }
-  
-  .search-bar {
+}
+
+.search-bar {
 	display: flex;
 	align-items: center;
 	gap: 8px;
 	flex-wrap: wrap;
-  }
-  
-  /* =================== Episodes Grid =================== */
-  #episodes-container {
+	margin-left: 15px;
+}
+
+#episode-count {
+	font-size: 14px;
+	color: #333;
+	margin-left: 15px;
+}
+
+/* =================== Episodes Grid =================== */
+#episodes-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 	gap: 20px;
 	padding-bottom: 15px;
-  }
-  
-  /* =================== Episode Card ==================== */
-  .episode-card {
+}
+
+/* =================== Episode Card ==================== */
+.episode-card {
 	background: #fff;
 	border-radius: 12px;
 	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
@@ -114,9 +108,9 @@ html, body {
 	padding: 0;
 	width: 100%; /* Make sure card fits grid cell */
 	box-sizing: border-box;
-  }
-  
-  .episode-card > a.episode-link {
+}
+
+.episode-card > a.episode-link {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -125,63 +119,64 @@ html, body {
 	color: inherit;
 	text-decoration: none;
 	transition: transform 0.14s ease, opacity 0.12s ease;
-  }
-  
-  .episode-card:focus-within {
+}
+
+.episode-card:focus-within {
 	box-shadow: 0 0 0 3px rgba(42, 122, 226, 0.9);
 	outline: none;
 	border-radius: 12px;
-  }
-  
-  .episode-card > a.episode-link:active {
+	z-index: 10;
+}
+
+.episode-card > a.episode-link:active {
 	opacity: 0.96;
 	transform: translateY(0.5px);
-  }
-  
-  .episode-card > a.episode-link:hover {
+}
+
+.episode-card > a.episode-link:hover {
 	transform: translateY(-3px);
-  }
-  
-  .episode-card img {
-	max-width: 100%;
-	height: auto; /* Let height adjust */
+}
+
+.episode-card img {
+	width: 100%;
+	height: 220px;
 	object-fit: cover;
 	display: block;
 	border-radius: 12px 12px 0 0; /* Rounded top corners */
-  }
-  
-  /* Episode content */
-  .episode-content {
+}
+
+/* Episode content */
+.episode-content {
 	padding: 18px 20px;
 	margin-top: 0;
-  }
-  
-  .title {
+}
+
+.title {
 	font-size: 18px;
 	font-weight: bold;
 	margin-bottom: 6px;
-  }
-  
-  .season-and-episode {
+}
+
+.season-and-episode {
 	font-size: 14px;
 	color: #666;
 	margin-bottom: 10px;
-  }
-  
-  .summary {
+}
+
+.summary {
 	font-size: 14px;
 	color: #444;
 	line-height: 1.4;
-  }
-  
-  /* ================= Loading Spinner ================== */
-  /* Hidden by default */
-  .hidden {
+}
+
+/* ================= Loading Spinner ================== */
+/* Hidden by default */
+.hidden {
 	display: none;
-  }
-  
-  /* Simple circular spinner */
-  .spinner {
+}
+
+/* Simple circular spinner */
+.spinner {
 	width: 50px;
 	height: 50px;
 	border: 6px solid #ddd;
@@ -189,16 +184,16 @@ html, body {
 	border-radius: 50%;
 	animation: spin 0.8s linear infinite;
 	margin: 20px auto;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
 	to {
-	  transform: rotate(360deg);
+		transform: rotate(360deg);
 	}
-  }
-  
-  /* ================= Error Message Box ================ */
-  .error-box {
+}
+
+/* ================= Error Message Box ================ */
+.error-box {
 	background: #ffdddd;
 	color: #990000;
 	padding: 12px;
@@ -206,40 +201,71 @@ html, body {
 	border: 1px solid #cc0000;
 	border-radius: 4px;
 	font-size: 1rem;
-  }
-  
-  /* =============== Responsive tweaks =============== */
-  @media (max-width: 640px) {
-  
+}
+
+/* =============== Responsive tweaks =============== */
+@media (max-width: 640px) {
 	/* Make containers full width with smaller padding */
 	#container,
 	#source-link-container,
 	#episodes-container {
-	  max-width: 100%;
-	  padding-left: 15px;
-	  padding-right: 15px;
+		max-width: 100%;
+		padding-left: 15px;
+		padding-right: 15px;
 	}
-  
+
+	header {
+		flex-direction: column;
+		width: 100%;
+		gap: 12px;
+		padding: 15px 20px;
+		justify-content: flex-start;
+	}
+
+	.select,
+	.search-bar {
+		width: 100%;
+		margin-left: 0;
+	}
+
 	#source-link-container {
-	  flex-direction: column;
-	  align-items: stretch;
-	  gap: 8px;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 8px;
 	}
-  
+
 	#source-link {
-	  text-align: left;
-	  margin: 0;
+		text-align: left;
+		margin: 0;
 	}
-  
+
 	#searchInput,
-	#select {
-	  width: 100%;
-	  box-sizing: border-box;
-	  margin-left: 0;
+	select {
+		width: 100%;
+		box-sizing: border-box;
+		margin-left: 0;
 	}
-  
+
 	#select-label {
-	  margin-left: 0;
+		margin-left: 0;
 	}
-  }
-  
+
+	#episode-count {
+		margin-left: 0;
+		text-align: left;
+	}
+}
+
+/* ==================== Footer ===================== */
+footer {
+	text-align: center;
+	padding: 15px 20px;
+}
+
+footer a {
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
