@@ -4,9 +4,182 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden; /* Prevent horizontal scroll */
-	font-family: Arial, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	background: #f4f4f4;
+	box-sizing: border-box;
 }
+
+  /* ===== Reset default body spacing ===== */
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* ==================== Header ===================== */
+  header {
+    background-color: rgba(136, 187, 136, 0.733);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header h1 {
+    flex: 1 1 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* ==================== Navigation ===================== */
+  nav {
+    background-color: rgba(136, 187, 136, 0.37);
+  }
+
+  nav .menu {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  nav .buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .nav-search {
+    height: 24px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    min-width: 260px;
+  }
+
+  nav button {
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+
+  nav button:hover {
+    background-color: #f8c24e;
+  }
+
+  nav button.active {
+    background-color: #f3a702;
+    color: white;
+    font-weight: bold;
+  }
+
+  /* ==================== Data Origin ===================== */
+  #data-origin {
+    max-width: 1100px;
+    margin: 0 auto 15px;
+    padding: 20px 20px 10px 20px; /* added top padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    
+  }
+
+  .controls-bar .select,
+  .controls-bar .select-episode-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .controls-bar select {
+    height: 36px;
+    padding: 4px 8px;
+    font-size: 14px;
+    min-width: 100px;
+    border-radius: 7px;
+    max-width: 290px;
+  }
+
+  #showSearch {
+    height: 28px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    min-width: 160px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    min-width: 266px;
+  }
+
+  .select-episode-wrapper {
+    gap: 8px;
+  }
+
+  /* Align TVMaze data text right on all screen sizes */
+  #data-origin p {
+    margin: 0;
+    font-size: 14px;
+    align-self: flex-end;
+    text-align: right;
+    width: 100%;
+  }
+
+  /* ==================== Responsive ===================== */
+  @media (max-width: 640px) {
+    nav .menu {
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    #data-origin {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .controls-bar {
+      width: 100%;
+    }
+
+    #showSearch {
+      max-width: 290px;
+    }
+
+	.show-card {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.show-card img {
+		width: 70%;
+	}
+  }
+
 
 /* =================== Episode image =================== */
 .img-of-episode img {
@@ -38,64 +211,13 @@ figure.img-of-episode {
 	margin: 10px auto 0;
 	padding: 0;
 }
-
-/* ====================== Header ====================== */
-header {
-	display: flex;
-	justify-content: space-between; /* push items to left and right edges */
-	align-items: center; /* vertically center items */
-	padding: 0 20px 0 25px;
-	max-width: 1200px;
-	margin: 10px auto;
-	box-sizing: border-box;
-	width: 96%;
-}
-
-/* =================== Search Bar ===================== */
-#searchInput {
-	padding: 5px 8px;
-	font-size: 14px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	margin-left: 5px;
-	height: 32px;
-	box-sizing: border-box;
-}
-
-select {
-	padding: 5px 8px;
-	font-size: 14px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	margin-left: 5px;
-	height: 32px;
-	box-sizing: border-box;
-}
-
-#select-label {
-	margin-left: 15px;
-}
-
-.search-bar {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	flex-wrap: wrap;
-	margin-left: 15px;
-}
-
-#episode-count {
-	font-size: 14px;
-	color: #333;
-	margin-left: 15px;
-}
-
 /* =================== Episodes Grid =================== */
 #episodes-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* responsive columns */
 	gap: 20px;
 	padding-bottom: 15px;
+	justify-content: center; /* center the entire grid */
 }
 
 /* =================== Episode Card ==================== */
@@ -106,7 +228,7 @@ select {
 	overflow: hidden;
 	transition: transform 0.18s ease;
 	padding: 0;
-	width: 100%; /* Make sure card fits grid cell */
+	width: 100%;
 	box-sizing: border-box;
 }
 
@@ -142,10 +264,9 @@ select {
 	height: 220px;
 	object-fit: cover;
 	display: block;
-	border-radius: 12px 12px 0 0; /* Rounded top corners */
+	border-radius: 12px 12px 0 0;
 }
 
-/* Episode content */
 .episode-content {
 	padding: 18px 20px;
 	margin-top: 0;
@@ -170,12 +291,10 @@ select {
 }
 
 /* ================= Loading Spinner ================== */
-/* Hidden by default */
 .hidden {
 	display: none;
 }
 
-/* Simple circular spinner */
 .spinner {
 	width: 50px;
 	height: 50px;
@@ -203,9 +322,13 @@ select {
 	font-size: 1rem;
 }
 
-/* =============== Responsive tweaks =============== */
+/* Wrapper for Episodes + count */
+.select-episode-wrapper {
+	gap: 8px; /* spacing between select and count */
+}
+
+/* ==================== Responsive tweaks ===================== */
 @media (max-width: 640px) {
-	/* Make containers full width with smaller padding */
 	#container,
 	#source-link-container,
 	#episodes-container {
@@ -214,19 +337,6 @@ select {
 		padding-right: 15px;
 	}
 
-	header {
-		flex-direction: column;
-		width: 100%;
-		gap: 12px;
-		padding: 15px 20px;
-		justify-content: flex-start;
-	}
-
-	.select,
-	.search-bar {
-		width: 100%;
-		margin-left: 0;
-	}
 
 	#source-link-container {
 		flex-direction: column;
@@ -234,38 +344,8 @@ select {
 		gap: 8px;
 	}
 
-	#source-link {
-		text-align: left;
-		margin: 0;
-	}
-
-	#searchInput,
-	select {
-		width: 100%;
-		box-sizing: border-box;
-		margin-left: 0;
-	}
-
-	#select-label {
-		margin-left: 0;
-	}
-
 	#episode-count {
 		margin-left: 0;
 		text-align: left;
 	}
-}
-
-/* ==================== Footer ===================== */
-footer {
-	text-align: center;
-	padding: 15px 20px;
-}
-
-footer a {
-	text-decoration: none;
-}
-
-footer a:hover {
-	text-decoration: underline;
 }

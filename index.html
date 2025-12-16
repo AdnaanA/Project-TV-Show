@@ -1,51 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-    content="TV Show Project for Adnaan (AdnaanA) at CYF" />
+  <meta name="description" content="TV Show Project for Adnaan (AdnaanA) at CYF" />
   <title>TV Show Project | Adnaan (AdnaanA)</title>
+
+  <style>
+  /* ===== Reset default body spacing ===== */
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* ==================== Header ===================== */
+  header {
+    background-color: rgba(136, 187, 136, 0.733);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header h1 {
+    flex: 1 1 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* ==================== Navigation ===================== */
+  nav {
+    background-color: rgba(136, 187, 136, 0.37);
+  }
+
+  nav .menu {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  nav .buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .nav-search {
+    height: 24px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    min-width: 260px;
+  }
+
+  nav button {
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+
+  nav button:hover {
+    background-color: #f8c24e;
+  }
+
+  nav button.active {
+    background-color: #f3a702;
+    color: white;
+    font-weight: bold;
+  }
+
+  /* ==================== Data Origin ===================== */
+  #data-origin {
+    max-width: 1100px;
+    margin: 0 auto 15px;
+    padding: 20px 20px 10px 20px; /* added top padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    
+  }
+
+  .controls-bar .select,
+  .controls-bar .select-episode-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .controls-bar select {
+    height: 36px;
+    padding: 4px 8px;
+    font-size: 14px;
+    min-width: 100px;
+    border-radius: 7px;
+    max-width: 290px;
+  }
+
+  #showSearch {
+    height: 28px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    min-width: 160px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    min-width: 360px;
+  }
+
+  .select-episode-wrapper {
+    gap: 8px;
+  }
+
+  /* Align TVMaze data text right on all screen sizes */
+  #data-origin p {
+    margin: 0;
+    font-size: 14px;
+    align-self: flex-end;
+    text-align: right;
+    width: 100%;
+  }
+
+  /* ==================== Responsive ===================== */
+  @media (max-width: 640px) {
+    nav .menu {
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    #data-origin {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .controls-bar {
+      width: 100%;
+    }
+
+    #showSearch {
+      width: 100%;
+    }
+  }
+  </style>
   <link href="style.css" rel="stylesheet" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
-
-
 <body>
+
   <header>
-    <div id="source-link-container">
-      <div class="select">
-        <label for="selectShow" id="select-label">Shows:</label>
-        <select name="select-show" id="selectShow">
-        </select>
-      </div>
-      <div class="select">
-        <label for="selectEpisode" id="select-label">Episodes:</label>
-        <select name="select-episode" id="selectEpisode">
-          <option value="all-episodes">All Episodes</option>
-        </select>
-      </div>
-      <div class="search-bar">
-        <label for="searchInput">Search:</label>
-        <input type="text" id="searchInput" placeholder="Type to search..." />
-      </div>
-      <span id="episode-count"></span>
-    </div>
+    <h1>Adnaan's TV Show Project</h1>
   </header>
+
+  <nav>
+    <div class="menu">
+      <div class="buttons">
+        <button onclick="location.href='home.html'">Home</button>
+        <button onclick="location.href='index.html'">TV Shows</button>
+      </div>
+  
+      <!-- Search moved here -->
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search episodes..."
+        class="nav-search"
+      />
+    </div>
+  </nav>
+    
+  <section id="data-origin">
+    <div class="controls-bar">
+      <div class="select">
+        <label for="selectShow">Shows:</label>
+        <select id="selectShow"></select>
+      </div>
+      <div class="select-episode-wrapper">
+        <label for="selectEpisode">Episodes:</label>
+        <select id="selectEpisode">
+          <option value="all-episodes"></option>
+        </select>
+        <span id="episode-count"></span>
+      </div>
+    </div>
+    <p>
+      Data originally from
+      <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>
+    </p>
+  </section>
+
   <main id="container">
     <div id="loading-spinner" class="spinner hidden"></div>
     <div id="error-message" class="hidden error-box"></div>
     <section id="episodes-container" aria-label="Episodes"></section>
   </main>
-  <footer>
-    <p>
-      Data originally from
-      <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>
-    </p>
-  </footer>
-  <!-- Loads YOUR javascript code -->
-  <script src="script.js"></script>
-</body>
 
+  <script src="script.js"></script>
+
+  <script>
+    // Select all nav buttons
+    const navButtons = document.querySelectorAll('nav button');
+  
+    // Get current page filename (e.g., "home.html" or "index.html")
+    const currentPage = window.location.pathname.split('/').pop();
+  
+    navButtons.forEach(btn => {
+      // Extract href from the onclick attribute
+      const onclickAttr = btn.getAttribute('onclick'); // e.g., "location.href='home.html'"
+      if (!onclickAttr) return;
+  
+      const match = onclickAttr.match(/'(.+?)'/);
+      if (!match) return;
+  
+      const href = match[1];
+  
+      // Add or remove 'active' class
+      if (href === currentPage) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
 </html>

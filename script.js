@@ -32,34 +32,51 @@ function hideError() {
 // SETUP (runs on page load)
 // =======================================
 async function setup() {
-	showSpinner(); // show spinner immediately
-	hideError(); // hide old errors if any
+  showSpinner(); // show spinner immediately
+  hideError(); // hide old errors if any
+  // Get showId from URL if provided
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedShowId = parseInt(urlParams.get("showId"));
 
-	// 1. Fetch data from TVMaze API
-	_shows = await loadShows();
-	const firstShowId = _shows[0]?.id || 1;
-	_episodes = await loadEpisodes(firstShowId); // load episodes of first show by default
-	_episodesCache[firstShowId] = _episodes; // Cache first show
+  // 1. Fetch data from TVMaze API
+  _shows = await loadShows();
+  let showIdToLoad = selectedShowId;
 
-	// 2.Populate dropdowns
-	populateSelectShowOptions();
-	populateSelectEpisodeOptions();
+  // If no showId passed → default to first show
+  if (!showIdToLoad || isNaN(showIdToLoad)) {
+    showIdToLoad = _shows[0]?.id || 1;
+  }
 
-	hideSpinner(); // hide spinner after data is loaded
+  // If episodes cached → reuse
+  if (_episodesCache[showIdToLoad]) {
+    _episodes = _episodesCache[showIdToLoad];
+  } else {
+    _episodes = await loadEpisodes(showIdToLoad);
+    _episodesCache[showIdToLoad] = _episodes;
+  }
 
-	// 3. Render cards- pass in show name to display
-	makePageForEpisodes(_episodes); //show first show episodes by default
+  // 2.Populate dropdowns
+  populateSelectShowOptions();
 
-	// 4. Setup events
-	document
-		.getElementById('searchInput')
-		.addEventListener('input', handleQueries);
-	document
-		.getElementById('selectEpisode')
-		.addEventListener('change', handleQueries);
-	document
-		.getElementById('selectShow')
-		.addEventListener('change', selectShow);
+  // Set selected show in dropdown
+  document.getElementById("selectShow").value = String(showIdToLoad);
+
+  // Populate episodes dropdown
+  populateSelectEpisodeOptions();
+
+  hideSpinner(); // hide spinner after data is loaded
+
+  // 3. Render cards- pass in show name to display
+  makePageForEpisodes(_episodes); //show first show episodes by default
+
+  // 4. Setup events
+  document
+    .getElementById("searchInput")
+    .addEventListener("input", handleQueries);
+  document
+    .getElementById("selectEpisode")
+    .addEventListener("change", handleQueries);
+  document.getElementById("selectShow").addEventListener("change", selectShow);
 }
 
 // =======================================
