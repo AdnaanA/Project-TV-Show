@@ -7,166 +7,84 @@
   <title>TV Show Project | Adnaan (AdnaanA)</title>
 
   <style>
-  /* ===== Reset default body spacing ===== */
-  html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+            /* ===== Shows container ===== */
+            #shows-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1100px;
+            margin: 20px auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-  /* ==================== Header ===================== */
-  header {
-    background-color: rgba(136, 187, 136, 0.733);
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
+        /* ===== Show Card ===== */
+        .show-card {
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-sizing: border-box;
+        }
 
-  header h1 {
-    flex: 1 1 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-  }
+        .show-card img {
+            width: 180px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
 
-  /* ==================== Navigation ===================== */
-  nav {
-    background-color: rgba(136, 187, 136, 0.37);
-  }
+        .show-card div {
+            flex: 1;
+            min-width: 250px;
+        }
 
-  nav .menu {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-  }
+        .show-card h2 {
+            margin: 0 0 6px;
+        }
 
-  nav .buttons {
-    display: flex;
-    gap: 10px;
-  }
+        .show-card button {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border: none;
+            background-color: #f3a702;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
 
-  .nav-search {
-    height: 24px;
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 7px;
-    border: 1px solid #ccc;
-    min-width: 260px;
-  }
+        .show-card button:hover {
+            background-color: #f7d07d;
+        }
+            /* ===== Scroll to Top ===== */
+            #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            font-size: 38px;
+            border: none;
+            outline: none;
+            background-color: #f3a702;
+            color: white;
+            cursor: pointer;
+            padding: 16px 20px;
+            border-radius: 50%;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background 0.3s;
+        }
 
-  nav button {
-    padding: 10px 20px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-  }
-
-  nav button:hover {
-    background-color: #f8c24e;
-  }
-
-  nav button.active {
-    background-color: #f3a702;
-    color: white;
-    font-weight: bold;
-  }
-
-  /* ==================== Data Origin ===================== */
-  #data-origin {
-    max-width: 1100px;
-    margin: 0 auto 15px;
-    padding: 20px 20px 10px 20px; /* added top padding */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    font-size: 14px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  .controls-bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    
-  }
-
-  .controls-bar .select,
-  .controls-bar .select-episode-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .controls-bar select {
-    height: 36px;
-    padding: 4px 8px;
-    font-size: 14px;
-    min-width: 100px;
-    border-radius: 7px;
-    max-width: 290px;
-  }
-
-  #showSearch {
-    height: 28px;
-    padding: 6px 10px;
-    font-size: 14px;
-    border-radius: 7px;
-    border: 1px solid #ccc;
-    min-width: 160px;
-    border-radius: 7px;
-    border: 1px solid #ccc;
-    min-width: 360px;
-  }
-
-  .select-episode-wrapper {
-    gap: 8px;
-  }
-
-  /* Align TVMaze data text right on all screen sizes */
-  #data-origin p {
-    margin: 0;
-    font-size: 14px;
-    align-self: flex-end;
-    text-align: right;
-    width: 100%;
-  }
-
-  /* ==================== Responsive ===================== */
-  @media (max-width: 640px) {
-    nav .menu {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    #data-origin {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .controls-bar {
-      width: 100%;
-    }
-
-    #showSearch {
-      width: 100%;
-    }
-  }
+        #scrollTopBtn:hover {
+            background-color: #f7c14f;
+        }
   </style>
   <link href="style.css" rel="stylesheet" />
 </head>
@@ -179,48 +97,120 @@
   <nav>
     <div class="menu">
       <div class="buttons">
-        <button onclick="location.href='home.html'">Home</button>
-        <button onclick="location.href='index.html'">TV Shows</button>
+        <button onclick="location.href='index.html'">Home</button>
+        <button onclick="location.href='episodes.html'">TV Shows</button>
       </div>
   
       <!-- Search moved here -->
       <input
-        id="searchInput"
+        id="showSearch"
         type="text"
-        placeholder="Search episodes..."
+        placeholder="Search shows..."
         class="nav-search"
       />
     </div>
   </nav>
     
   <section id="data-origin">
-    <div class="controls-bar">
-      <div class="select">
-        <label for="selectShow">Shows:</label>
-        <select id="selectShow"></select>
-      </div>
-      <div class="select-episode-wrapper">
-        <label for="selectEpisode">Episodes:</label>
-        <select id="selectEpisode">
-          <option value="all-episodes"></option>
-        </select>
-        <span id="episode-count"></span>
-      </div>
-    </div>
     <p>
       Data originally from
       <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>
     </p>
   </section>
 
-  <main id="container">
-    <div id="loading-spinner" class="spinner hidden"></div>
-    <div id="error-message" class="hidden error-box"></div>
-    <section id="episodes-container" aria-label="Episodes"></section>
-  </main>
 
-  <script src="script.js"></script>
+  <section id="shows-container" aria-label="TV Shows"></section>
 
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" title="Go to top">↑</button>
+  
+  <script>
+      let _showsCache = null;
+  
+      function truncateSummary(text) {
+          let words = text.split(/\s+/);
+          if (words.length > 20) {
+              return words.slice(0, 20).join(" ") + "...";
+          }
+          return text;
+      }
+  
+      async function loadShowsOnce() {
+          if (_showsCache) return _showsCache;
+          const res = await fetch("https://api.tvmaze.com/shows");
+          _showsCache = await res.json();
+          return _showsCache;
+      }
+  
+      function renderShows(shows) {
+          const container = document.getElementById("shows-container");
+          container.innerHTML = "";
+  
+          shows.forEach(show => {
+              const card = document.createElement("article");
+              card.classList.add("show-card");
+  
+              const cleanSummary = (show.summary || "").replace(/<[^>]+>/g, "");
+              const truncated = truncateSummary(cleanSummary);
+  
+              card.innerHTML = `
+                  <img src="${show.image?.medium || "https://placehold.co/300x450"}" alt="${show.name}">
+                  <div>
+                      <h2>${show.name}</h2>
+                      <p><strong>Genres:</strong> ${show.genres.join(", ")}</p>
+                      <p><strong>Status:</strong> ${show.status}</p>
+                      <p><strong>Rating:</strong> ${show.rating?.average ?? "N/A"}</p>
+                      <p><strong>Runtime:</strong> ${show.runtime || "?"} min</p>
+                      <p>${truncated}</p>
+                      <button class="open-show" data-id="${show.id}">View episodes</button>
+                  </div>
+              `;
+  
+              container.appendChild(card);
+          });
+      }
+  
+      document.getElementById("showSearch").addEventListener("input", async (e) => {
+          const q = e.target.value.toLowerCase();
+          const all = await loadShowsOnce();
+  
+          const filtered = all.filter(show => {
+              const summary = (show.summary || "").replace(/<[^>]+>/g, "").toLowerCase();
+              return (
+                  show.name.toLowerCase().includes(q) ||
+                  summary.includes(q) ||
+                  show.genres.join(" ").toLowerCase().includes(q)
+              );
+          });
+  
+          renderShows(filtered);
+      });
+  
+      document.addEventListener("click", (e) => {
+          if (!e.target.classList.contains("open-show")) return;
+          const id = e.target.dataset.id;
+          window.location.href = `index.html?showId=${id}`;
+      });
+  
+      (async () => {
+          const shows = await loadShowsOnce();
+          renderShows(shows);
+      })();
+  
+      // Scroll to top button
+      const scrollBtn = document.getElementById("scrollTopBtn");
+      window.onscroll = function() {
+          if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+              scrollBtn.style.display = "block";
+          } else {
+              scrollBtn.style.display = "none";
+          }
+      };
+      scrollBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+  </script>
+  
   <script>
     // Select all nav buttons
     const navButtons = document.querySelectorAll('nav button');
