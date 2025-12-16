@@ -189,7 +189,7 @@
       document.addEventListener("click", (e) => {
           if (!e.target.classList.contains("open-show")) return;
           const id = e.target.dataset.id;
-          window.location.href = `index.html?showId=${id}`;
+          window.location.href = `episodes.html?showId=${id}`;
       });
   
       (async () => {
@@ -216,8 +216,12 @@
     const navButtons = document.querySelectorAll('nav button');
   
     // Get current page filename (e.g., "home.html" or "index.html")
-    const currentPage = window.location.pathname.split('/').pop();
-  
+    let currentPage = window.location.pathname.split('/').pop();
+
+    // Netlify root fix
+    if (currentPage === "") {
+      currentPage = "index.html";
+    }
     navButtons.forEach(btn => {
       // Extract href from the onclick attribute
       const onclickAttr = btn.getAttribute('onclick'); // e.g., "location.href='home.html'"
